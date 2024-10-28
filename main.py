@@ -23,6 +23,11 @@ def guess_is_valid(candidate):
             return False
     return True
 
+ def get_word_check_if_was_guessed_before(guesses):
+    guess = input("Your next take: ")
+    while guess in guesses:
+        guess = input("Oops :( You've already guessed this word. Your next take: ")
+    return guess
 
 guessed = 0
 errors = 0
@@ -41,7 +46,7 @@ print(f"Your word is '{word}'")
 
 
 while not is_game_over():
-    guess = input("Your next take: ")
+    guess = get_word_check_if_was_guessed_before(guesses)
 
     if not guess_is_valid(guess):
         continue
